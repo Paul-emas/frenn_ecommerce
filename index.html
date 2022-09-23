@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Frenn e-commerce checkout page</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<script src="https://kit.fontawesome.com/d7c9b6ebd5.js" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="styles.css" />
+		<script src="https://frenn-widget-file.vercel.app"></script>
+		<!-- <script src="https://storage.googleapis.com/demo-site2/index.js"></script> -->
+	</head>
+
+	<body>
+		<main>
+			<aside>
+				<nav class="navbar">
+					<div class="navbar__content">
+						<div class="navbar__logo">
+							<a href="/">
+								<img src="/images/logo.png" height="38" alt="Frenn bank logo" srcset="" />
+							</a>
+						</div>
+						<i class="fa fa-bars navbar__menu"></i>
+						<ul class="navbar__links-container">
+							<a href="#" class="navbar__links">Home</a>
+							<a href="#" class="navbar__links">Shop</a>
+							<a href="#" class="navbar__links">Checkout</a>
+							<button class="navbar__btn navbar__btn-cart">
+								<i class="fa fa-shopping-cart"></i>
+								<div class="count">1</div>
+							</button>
+							<button class="navbar__btn navbar__btn-login">Login</button>
+						</ul>
+					</div>
+				</nav>
+			</aside>
+			<div class="steps">
+				<div class="steps__container">
+					<div class="steps__item">
+						<div class="steps__item-count">
+							<i class="fa fa-check"></i>
+						</div>
+						<div class="steps__item-label">Personal Info</div>
+					</div>
+					<div class="steps__item">
+						<div class="steps__item-count">
+							<i class="fa fa-check"></i>
+						</div>
+						<div class="steps__item-label">Payments</div>
+					</div>
+					<div class="steps__item">
+						<div class="steps__item-count">
+							<i class="fa fa-check"></i>
+						</div>
+						<div class="steps__item-label">Shipping</div>
+					</div>
+					<div class="steps__item">
+						<div class="steps__item-count">4</div>
+						<div class="steps__item-label">Checkout</div>
+					</div>
+				</div>
+			</div>
+			<div class="cart">
+				<div class="cart__container">
+					<div class="cart__item">
+						<div class="cart__item-image">
+							<div class="cart__item-smbox">
+								<div class="cart__item-sm active">
+									<img src="/images/shirt.jpg" alt="Frenn demo cart shirt small" />
+								</div>
+								<div class="cart__item-sm">
+									<img src="/images/shirt.jpg" alt="Frenn demo cart shirt small" />
+								</div>
+								<div class="cart__item-sm">
+									<img src="/images/shirt.jpg" alt="Frenn demo cart shirt small" />
+								</div>
+							</div>
+							<div class="cart__item-lg">
+								<img src="/images/shirt.jpg" alt="Frenn demo cart shirt large" />
+							</div>
+						</div>
+						<div class="cart__item-desc">
+							<div class="cart__item-name">Art Splash T-shirt</div>
+							<div class="cart__item-ratings">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							</div>
+							<div class="cart__item-price">&#8358;50,000.00</div>
+							<div class="cart__item-detail">
+								Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt ullam minus impedit vero unde fuga
+								est cum molestias, cumque laborum animi. Molestiae aliquid placeat dignissimos molestias maiores iusto
+								nam recusandae.
+							</div>
+							<button id="paymentForm" class="cart__item-btn">Pay with Frenn</button>
+							<div class="cart__item-footnote">
+								<em>*This is a real transaction, and the money will be auto-refunded to your account in 4-5 days.</em>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<script type="text/javascript">
+			var paymentForm = document.getElementById('paymentForm');
+			paymentForm.addEventListener('click', payWithFrenn, false);
+
+			function payWithFrenn() {
+				var handler = FrennWidgetPop.init({
+					key: 'sndsjdj363738ndsjsjhdd',
+					merchantId: '2fbeba50-cc8b-4e04-a3a7-4a06a79fd416',
+					orderReference: `R7012584${Math.random() * 10}`,
+					amount: 50000,
+					customer: {
+						phoneNo: '2349900015911',
+						name: 'Bolanine Rhoades',
+						email: 'bolanine.rhoades@example.com',
+						shippingAddress: '8A, Park View Apartments, Olajumoke Street, Park View Estate, Ikoyi, Lagos',
+						shippingLGA: 'Eti-Osa',
+						shippingState: 'Lagos',
+						createdAt: '1234567890',
+					},
+					transactionHistory: {
+						totalOrders: 4,
+						totalSales: 12000,
+						totalRefunds: 2000,
+						mOrdersLast3: 2,
+						mSalesLast3: 5500,
+						mRefundsLast3: 2000,
+					},
+					redirectUrl: 'https://demo.frenn.com/success.html',
+					webhook: 'http://www.example.com/webhook/',
+				});
+				handler.showPopUp();
+			}
+		</script>
+	</body>
+</html>
